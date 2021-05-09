@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Evento{% endblock %}
+
+{% block body %}
+{% include '_inc/menu_admin.html.twig' %}
+<main>
+<div class="well col-md-8">
+<div class="col-md-12 title-evento"><div class="group"><h4>Editar Expedição</h4></div><p class="text-right"></p></div>
+
+    {# {{ titulo }} #}
+
+    {{ include('evento/_form.html.twig', {'button_label': 'Atualizar'}) }}
+
+    <div class="imagem_form">
+            <p>Para modificar a imagem basta fazer upload de uma nova que a mesma será alterada</p>
+            <img src="/uploads/eventos/{{ evento.imagem }}" width="100%" />
+    </div>
+
+    {{ include('evento/_delete_form.html.twig') }}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,130 @@
+<?php return [PHP_INT_MAX, static function () {
+
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\DadosProfissionais',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\DadosProfissionais',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\DadosProfissionaisRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => 0,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'empresa' => [
+                            'fieldName' => 'empresa',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 100,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => 0,
+                            'columnName' => 'empresa',
+                        ],
+                        'ramoDeAtividade' => [
+                            'fieldName' => 'ramoDeAtividade',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 90,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => 0,
+                            'columnName' => 'ramo_de_atividade',
+                        ],
+                        'funcao' => [
+                            'fieldName' => 'funcao',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 50,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => 0,
+                            'columnName' => 'funcao',
+                        ],
+                        'email' => [
+                            'fieldName' => 'email',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 180,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => 0,
+                            'columnName' => 'email',
+                        ],
+                        'telefone' => [
+                            'fieldName' => 'telefone',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 16,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => 0,
+                            'columnName' => 'telefone',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'empresa' => 'empresa',
+                        'ramo_de_atividade' => 'ramoDeAtividade',
+                        'funcao' => 'funcao',
+                        'email' => 'email',
+                        'telefone' => 'telefone',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'empresa' => 'empresa',
+                        'ramoDeAtividade' => 'ramo_de_atividade',
+                        'funcao' => 'funcao',
+                        'email' => 'email',
+                        'telefone' => 'telefone',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'dados_profissionais',
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+
+}];

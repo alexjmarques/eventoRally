@@ -1,0 +1,19 @@
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></div>
+        <div class=""></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {# <li><a href="{{ path('cliente_index') }}">Clientes</a></li> #}
+                <li><a href="{{ path('evento_index') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>

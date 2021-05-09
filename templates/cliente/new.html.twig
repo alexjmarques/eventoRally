@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novo Cliente{% endblock %}
+
+{% block body %}
+{% include '_inc/menu_admin.html.twig' %}
+<main>
+<div class="well col-md-8">
+
+<div class="col-md-12 title-evento"><div class="group"><h4>Cadastro de Participante</h4></div><p class="text-right"></p></div>
+
+    {{ include('cliente/_form.html.twig', {'button_label': 'Cadastrar'}) }}
+</div>
+</main>
+{% endblock %}

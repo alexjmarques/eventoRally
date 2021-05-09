@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informações do Cliente{% endblock %}
+
+{% block body %}
+{% include '_inc/menu_admin.html.twig' %}
+<main>
+<div class="well col-md-8">
+
+<div class="col-md-12 title-evento"><div class="group"><h4>Informações do Cliente</h4></div><p class="text-right"></p></div>
+<div class="col-md-12">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Email</th>
+                <td>{{ cliente.email }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ cliente.nome }}</td>
+            </tr>
+            <tr>
+                <th>Apelido</th>
+                <td>{{ cliente.apelido }}</td>
+            </tr>
+            <tr>
+                <th>DataNascimento</th>
+                <td>{{ cliente.dataNascimento ? cliente.dataNascimento|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Rg</th>
+                <td>{{ cliente.rg }}</td>
+            </tr>
+            <tr>
+                <th>Cpf</th>
+                <td>{{ cliente.cpf }}</td>
+            </tr>
+            <tr>
+                <th>Cnh</th>
+                <td>{{ cliente.cnh }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                {% if cliente.sexo == 1 %}
+                <td>Masculino</td>
+                {% elseif cliente.sexo == 2 %}
+                <td>Feminino</td>
+                {% else %}
+                <td>Não Informado</td>
+                {% endif %}
+
+                
+            </tr>
+            <tr>
+                <th>Telefone Residencial</th>
+                <td>{{ cliente.telefoneResidencial }}</td>
+            </tr>
+            <tr>
+                <th>Telefone Celular</th>
+                <td>{{ cliente.telefoneCelular }}</td>
+            </tr>
+            <tr>
+                <th>Endereco</th>
+                <td>{{ cliente.endereco }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ cliente.numero }}</td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td>{{ cliente.complemento }}</td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td>{{ cliente.bairro }}</td>
+            </tr>
+            <tr>
+                <th>Cep</th>
+                <td>{{ cliente.cep }}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{ cliente.cidade }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ cliente.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="form-group">
+        <div class="col-md-12">
+        
+            <a href="{{ path('cliente_index') }}" class="btn btn-lg btn-primary pull-right vazado">Voltar</a>
+            <div class="clearfix"></div>
+            </div>
+    </div>
+</div>
+</main>
+{% endblock %}

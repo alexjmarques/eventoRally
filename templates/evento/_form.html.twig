@@ -1,0 +1,50 @@
+{{ form_start(form) }}
+     <div class="col-md-12">
+        <div class="col-md-7 center-block forms">
+            {{ form_row(form.titulo, { 'label': 'Nome da expedição' }) }}
+            {{ form_row(form.slug, { 'label': 'URL amigável' }) }}
+            <div class="input-group form-group">
+            <label class="control-label required" for="evento_pais">Imagem de capa</label>
+            <div class="clearfix"></div>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01" style="padding: 4px;">Upload</span>
+            </div>
+            <div class="custom-file">
+                {{ form_widget(form.imagem, {'attr': {'class': 'custom-file-input'}}) }}
+                {{ form_label(form.imagem, ' ', {'label_attr': {'class': 'custom-file-label'}}) }}
+            </div>
+            </div>
+            {{ form_row(form.data, { 'label': 'Data de início' }) }}
+            {{ form_row(form.localPartida, { 'label': 'Local de largada' }) }}
+            {{ form_row(form.localChegada, { 'label': 'Local da chegada' }) }}
+            {{ form_row(form.pais, { 'label': 'Pais' }) }}
+            {{ form_row(form.descricaoLonga, { 'label': 'Informação da expedição' }) }}
+            {{ form_row(form.descricaoCurta, { 'label': 'Descrição curta' }) }}
+
+            <div class="input-group form-group">
+            {{ form_label(form.valor, 'Valor (Exemplo.: 2000,35)', {'label_attr': {'class': ''}}) }}
+            <div class="clearfix"></div>
+            <div class="input-group-prepend input-group-prepend_tp">
+                <span class="input-group-text" id="inputGroupFileAddon01">R$</span>
+            </div>
+            <div class="custom-file">
+            {{ form_widget(form.valor, {'attr': {'class': ''}}) }}
+            </div>
+            </div>
+
+            {{ form_row(form.vagas, { 'label': 'Vagas disponíveis para esta Expedição' }) }}
+
+            {{ form_widget(form) }}
+        <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+        <div class="col-md-7 center-block">
+            <button class="btn btn-lg btn-primary pull-right">{{ button_label|default('Salvar') }}</button>
+            <a href="{{ path('evento_index') }}" class="btn btn-lg btn-primary pull-right vazado">Voltar</a>
+            <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}

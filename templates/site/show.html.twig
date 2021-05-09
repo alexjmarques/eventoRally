@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expedição 4x4 Aventura{% endblock %}
+
+{% block body %}
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><a href="{{ path('site') }}"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></a></div>
+        <div class=""></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_login') }}">Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+<style>
+.parallax { 
+  background-image: url("/uploads/eventos/{{ evento.imagem }}");
+}
+</style>
+<main class="container rel_ativo">
+<div class="parallax"></div>
+<div class="well">
+
+<div class="painel">
+          
+
+            <h2>{{ evento.titulo }}</h2>
+            <div class="data"><i class="fas fa-calendar-alt"></i> {{ evento.data ? evento.data|date('d/m/Y') : '' }}</div>
+
+            <div class="col-md-8">
+            <div class="partida"><i class="fas fa-map-marker-alt"></i> Partida:  {{ evento.localPartida }}</div>
+            <div class="chegada"><i class="fas fa-map-marker-alt"></i> Chegada:  {{ evento.localChegada }}</div>
+
+            <div class="chegada"><i class="fas fa-users"></i> {{ evento.vagas }} Vagas</div>
+            
+            <div class="group_dados">
+            <div class="col-md-6">{{ evento.pais }}</div>
+            </div>
+            <div class="group_dados">
+            <div class="col-md-6">{{ evento.data ? evento.data|date('Y') : '' }}</div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="price">
+            R$ {{ evento.valor|number_format(2, ',', '.') }}
+            </div>
+
+
+            {% if evento.vagas == 0 %}
+              <span class="btn btn-lg btn-primary disabled">Em Breve</span>
+             {% elseif evento.usuarioEventos|length == evento.vagas %}
+              <span class="btn btn-lg btn-primary disabled">Esgotado</span>
+            {% else %}
+              <a href="{{ path('evento_showresumo_site', {'slug': evento.slug}) }}" class="btn btn-lg btn-primary">Inscreva-se</a>
+            {% endif %}
+</div>
+            <div class="col-md-12"><p>{{ evento.descricaoLonga|raw }}</p></div>
+
+
+          
+            {# <div class="col-md-12">
+            <a href="{{ path('evento_show', {'id': evento.id}) }}" class="btn btn-lg btn-primary col-md-4 center-block">Inscrever</a>
+</div> #}
+            </div>
+
+    
+    
+    </div>
+</main>
+{% endblock %}

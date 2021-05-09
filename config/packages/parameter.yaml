@@ -1,0 +1,2 @@
+parameters:
+  PAGSEGURO_URL_RETORNO: '%env(PAGSEGURO_URL_RETORNO)%'

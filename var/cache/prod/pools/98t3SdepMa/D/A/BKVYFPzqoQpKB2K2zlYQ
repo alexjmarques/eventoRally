@@ -1,0 +1,146 @@
+<?php return [PHP_INT_MAX, static function () {
+
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\Contato',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\Contato',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\ContatoRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => 0,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'nome' => [
+                            'fieldName' => 'nome',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 150,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'nome',
+                        ],
+                        'grauParentesco' => [
+                            'fieldName' => 'grauParentesco',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 30,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'grau_parentesco',
+                        ],
+                        'telefone' => [
+                            'fieldName' => 'telefone',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 15,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'telefone',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'nome' => 'nome',
+                        'grau_parentesco' => 'grauParentesco',
+                        'telefone' => 'telefone',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'nome' => 'nome',
+                        'grauParentesco' => 'grau_parentesco',
+                        'telefone' => 'telefone',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'contato',
+                    ],
+                ],
+                'associationMappings' => [
+                    [
+                        'dadosMedicos' => [
+                            'fieldName' => 'dadosMedicos',
+                            'joinColumns' => [
+                                [
+                                    'name' => 'dados_medicos_id',
+                                    'unique' => false,
+                                    'nullable' => false,
+                                    'onDelete' => null,
+                                    'columnDefinition' => null,
+                                    'referencedColumnName' => 'id',
+                                ],
+                            ],
+                            'cascade' => [],
+                            'inversedBy' => 'contatos',
+                            'targetEntity' => 'App\\Entity\\DadosMedicos',
+                            'fetch' => 2,
+                            'type' => 2,
+                            'mappedBy' => null,
+                            'isOwningSide' => true,
+                            'sourceEntity' => 'App\\Entity\\Contato',
+                            'isCascadeRemove' => false,
+                            'isCascadePersist' => false,
+                            'isCascadeRefresh' => false,
+                            'isCascadeMerge' => false,
+                            'isCascadeDetach' => false,
+                            'sourceToTargetKeyColumns' => [
+                                'dados_medicos_id' => 'id',
+                            ],
+                            'joinColumnFieldNames' => [
+                                'dados_medicos_id' => 'dados_medicos_id',
+                            ],
+                            'targetToSourceKeyColumns' => [
+                                'id' => 'dados_medicos_id',
+                            ],
+                            'orphanRemoval' => false,
+                        ],
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+
+}];

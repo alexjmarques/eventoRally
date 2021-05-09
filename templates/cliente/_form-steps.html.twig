@@ -1,0 +1,17 @@
+{# {% form_theme form 'forms/form_div_layout.html.twig' %} #}
+{{ form_start(form) }}
+<div class="col-md-12 forms">
+
+    <div class="col-md-8">
+        <h4>{{ titulo }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix"></div>
+    </div>        
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 colmais">
+            <button class="btn btn-lg btn-primary pull-right">{{ button_label|default('Salvar') }}</button>
+            <a href="{{ path('site') }}" class="btn btn-lg btn-primary pull-right vazado">Voltar</a>
+        </div>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expedições 4x4 Aventura{% endblock %}
+
+{% block body %}
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><a href="{{ path('site') }}"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></a></div>
+        <div class="col-sm"></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_login') }}">Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+
+<main>
+    <div class="well col-md-8">
+    <div class="col-md-12 title-evento"><div class="group"><h4>Pagamento da Inscrição</h4></div>
+    <p class="text-right">Evento: {{ evento.titulo }} | {{ evento.data ? evento.data|date('d/m/Y') : '' }} </p></div>
+        <div class="clearfix col-md-12">
+        <h5>Selecione a forma de pagamento</h5>
+                <div class="clearfix"></div>
+                <br>
+                <h6><strong>{{ evento.titulo }}</strong></h6>
+                <h6>{{ evento.descricaoCurta|raw }}</h6>
+                <h6>Valor: R$ {{ evento.valor|number_format(2, ',', '.') }}</h6>
+                <br>
+                <div class="">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-check form-radio-inline col-md-12 border">
+                                <label class="radio-inline"><input class="form-check-input" type="radio" id="cc" name="paymentForm" value="{{ metodoPagamentoCartaoCredito }}"><span class="checkmark circle"></span><h4>Cartão de Credito</h4></a></label>
+                            </div>
+                        </div>
+
+                        {# <div class="col-sm">
+                            <div class="form-check form-radio-inline col-md-12 border">
+                                <label class="radio-inline"><input class="form-check-input" type="radio" id="boleto" name="paymentForm" value="{{ metodoPagamentoBoleto }}"><span class="checkmark circle"></span><h4>Boleto</h4></a></label>
+                            </div>
+                        </div> #}
+                    </div>
+                    </div>
+                <div class="clearfix"></div>
+                {{ form_start(pagSeguroBoletoForm) }}
+                    {{ form_row(pagSeguroBoletoForm.session) }}
+                    <div class="row btn-submit-payment">
+                        <div class="col-sm-12">
+                            <p class="text-center" style="margin-bottom: 0;">
+                                <button id="button" class="btn btn-info btn-block" type="submit">
+                                    <i class="fa fa-lock"></i> GERAR BOLETO BANCARIO
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                {{ form_widget(pagSeguroBoletoForm._token) }}
+                {{ form_end(pagSeguroBoletoForm, {'render_rest': false}) }}
+
+
+                {{ form_start(pagSeguroCartaoCreditoForm) }}
+                    {{ form_row(pagSeguroCartaoCreditoForm.session) }}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-credit-card"></i> Pagar com Cartão de Crédito
+                            <div id="brand" class="pull-right">
+
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.numero) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-6">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.codigoSeguranca) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-6">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.mesVencimento) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-6">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.anoVencimento) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.nomeImpressoCartao) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.cpfTitular) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.dataNascimento) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-groups small text-uppercase">
+                                        {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.parcelas) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="text-center" style="margin-bottom: 0;">
+                                        <button id="button" class="btn btn-info btn-block" type="submit"><i
+                                                    class="fa fa-lock"></i> PAGAR COM CARTÃO
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_row(pagSeguroCartaoCreditoForm.valorTotal) }}
+                    {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.token) }}
+                    {{ form_row(pagSeguroCartaoCreditoForm.cartaoCredito.bandeira) }}
+                    {{ form_widget(pagSeguroCartaoCreditoForm._token) }}
+                {{ form_end(pagSeguroCartaoCreditoForm, {'render_rest': false}) }}
+           
+
+           
+
+            </div>
+            
+        </div>
+    </div>
+</main>
+{% endblock %}

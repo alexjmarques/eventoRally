@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscrição Concluída{% endblock %}
+
+{% block body %}
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><a href="{{ path('site') }}"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></a></div>
+        <div class=""></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_login') }}">Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+<main class="container rel_ativo">
+<div class="well col-md-6">
+
+
+        <div class="col-md-12">
+                <div class="center-block agradescimento">
+                    <h3 class="text-center">Inscrição efetuada com sucesso</h3>
+                    <p class="text-center">Sua inscrição no evento  <strong>{{ evento.titulo }}</strong>, foi efetuada
+com sucesso.<br><br>
+Dentro de instantes você receberá em seu email 
+informações de seu voucher para o evento.<br><br>
+Será disponibilizado em sua conta uma copia do
+seu voucher, caso não receba em seu email.  </p>
+                    
+                    
+                     
+                </div>
+        </div>
+        <div class="clearfix"></div>
+
+    
+    
+    </div>
+</main>
+
+{% endblock %}

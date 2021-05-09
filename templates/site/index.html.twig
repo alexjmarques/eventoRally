@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}Expedições 4x4 Aventura{% endblock %}
+
+{% block body %}
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><a href="{{ path('site') }}"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></a></div>
+        <div class=""></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_login') }}">Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+<main class="principal">
+<div class="container">
+    <div class="well">
+    <div class="col-md-12 title-evento">
+                <div class="group">
+                    <h4>Confira as expedições disponíveis</h4>
+                </div>
+                {# <p class="text-right">Evento: SERTÕES 2019 | De 24 de agosto até 01 setembro 2019</p> #}
+        </div>
+        <div class="col-md-12 listagem">
+        {% for evento in eventos %}
+        <div class="col-md-3">
+            <div class="painel">
+            {% if evento.vagas == 0 %}
+              <strong class="_esgot">Em Breve</strong>
+            {% elseif evento.usuarioEventos|length == evento.vagas %}
+            <strong class="_esgot">Esgotado</strong>
+            {% else %}
+            <strong class="_dispon">{{ evento.vagas - evento.usuarioEventos|length }} Vagas disponíveis </strong>
+            {% endif %}
+            <div class="img_full"><a href="{{ path('evento_listagem', {'slug': evento.slug}) }}"><img src="/uploads/eventos/{{ evento.imagem }}"></a></div>
+            <h2><a href="{{ path('evento_listagem', {'slug': evento.slug}) }}" class="link_1">{{ evento.titulo }}</a></h2>
+            <div class="data"><i class="fas fa-calendar-alt"></i> {{ evento.data ? evento.data|date('d/m/Y') : '' }} <i class=" marginl20 fas fa-users"></i> {{ evento.vagas }} Vagas</div>
+            {# <div class="partida"><i class="fas fa-map-marker-alt"></i> Partida:  {{ evento.localPartida }}</div>
+            <div class="chegada"><i class="fas fa-map-marker-alt"></i> Chegada:  {{ evento.localChegada }}</div> #}
+           
+
+            <div class="_flowover">{{ evento.descricaoCurta|raw }}</div>
+            <div class="group_dados">
+            <div class="col-md-6">{{ evento.pais }}</div>
+            <div class="col-md-6">{{ evento.data ? evento.data|date('Y') : '' }}</div>
+            <div class="clearfix"></div>
+            </div>
+            <div class="price">
+            R$ {{ evento.valor|number_format(2, ',', '.') }}
+            </div>
+            {% if evento.vagas == 0 %}
+              <a href="{{ path('evento_listagem', {'slug': evento.slug}) }}" class="btn btn-lg btn-primary cinza_esgotado">Em Breve</a>
+            {% elseif evento.usuarioEventos|length == evento.vagas %}
+              <a href="{{ path('evento_listagem', {'slug': evento.slug}) }}" class="btn btn-lg btn-primary cinza_esgotado">Esgotado</a>
+            {% else %}
+            <a href="{{ path('evento_listagem', {'slug': evento.slug}) }}" class="btn btn-lg btn-primary">Confira</a>
+            {% endif %}            
+            </div>
+        </div>
+        {% else %}
+            <div>
+                <p>Sem expedições cadastradas</p>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+        <div class="pagination__next"></div>
+    </div>
+</div>
+</main>
+{% endblock %}

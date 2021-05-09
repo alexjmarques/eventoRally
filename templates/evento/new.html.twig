@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nova Expedição{% endblock %}
+
+{% block body %}
+{% include '_inc/menu_admin.html.twig' %}
+<main>
+<div class="well col-md-8">
+<div class="col-md-12 title-evento"><div class="group"><h4>Nova Expedição</h4></div><p class="text-right"></p></div>
+    {{ include('evento/_form.html.twig') }}
+    </div>
+</main>
+{% endblock %}

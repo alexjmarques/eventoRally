@@ -1,0 +1,118 @@
+<?php return [PHP_INT_MAX, static function () {
+
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\DadosVeiculo',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\DadosVeiculo',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\DadosVeiculoRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => 0,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'anoFabricacao' => [
+                            'fieldName' => 'anoFabricacao',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 4,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'ano_fabricacao',
+                        ],
+                        'marca' => [
+                            'fieldName' => 'marca',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 50,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'marca',
+                        ],
+                        'modelo' => [
+                            'fieldName' => 'modelo',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 25,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'modelo',
+                        ],
+                        'placa' => [
+                            'fieldName' => 'placa',
+                            'type' => 'string',
+                            'scale' => 0,
+                            'length' => 10,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => 0,
+                            'columnName' => 'placa',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'ano_fabricacao' => 'anoFabricacao',
+                        'marca' => 'marca',
+                        'modelo' => 'modelo',
+                        'placa' => 'placa',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'anoFabricacao' => 'ano_fabricacao',
+                        'marca' => 'marca',
+                        'modelo' => 'modelo',
+                        'placa' => 'placa',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'dados_veiculo',
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+
+}];

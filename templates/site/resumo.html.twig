@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expedições 4x4 Aventura{% endblock %}
+
+{% block body %}
+<header>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm"><a href="{{ path('site') }}"><img src="/assets/images/4x4.png"><img src="/assets/images/rally.png"></a></div>
+        <div class=""></div>
+        <div class="col-sm right">
+          <ul class="nav site-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_logout') }}">Sair</a></li>
+            {% else %}
+                <li><a href="https://www.4x4aventura.com.br">Site 4x4 Aventura</a></li>
+                <li><a href="{{ path('site') }}">Expedições</a></li>
+                <li><a href="{{ path('cliente_login') }}">Cadastrar</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+</header>
+<main class="principal">
+<div class="well col-md-8">
+
+<div class="col-md-12 title-evento"><div class="group"><h4>Detalhes da Inscrição</h4></div><p class="text-right">Evento: {{ evento.titulo }} | {{ evento.data ? evento.data|date('d/m/Y') : '' }} </p></div>
+
+<div class="col-md-4 border">
+  <h4 class="data"> {{ evento.titulo }}</h4>
+  <div class="data laranja "><strong>Data:</strong> {{ evento.data ? evento.data|date('d/m/Y') : '' }}</div>
+  <div class="partida laranja mt15"><strong>Partida:</strong>  {{ evento.localPartida }}</div>
+  <div class="chegada laranja"><strong>Chegada:</strong> {{ evento.localChegada }}</div>
+  <div class="chegada laranja mt15"><strong>Pais:</strong> {{ evento.pais }}</div>
+</div>
+<div class="col-md-8">
+    <h4>Sobre a Expedição</h4>
+    {{ evento.descricaoLonga|raw }}
+    <h4 class="valor mt15 pull-right" style=" margin-top: 20px; font-size: 26px;"><strong style="font-size: 16px;">Valor total:</strong> R$ {{ evento.valor|number_format(2, ',', '.') }}</h4>
+</div>
+  <div class="col-md-12 mt15">
+    <a href="{{ path('checkout_index', {'id': evento.id}) }}" class="btn btn-lg btn-primary col-md-4 pull-right" style="max-width: 200px;">Pagar e Finalizar</a>
+  </div>
+</div>
+</main>
+{% endblock %}
